@@ -1,0 +1,24 @@
+.nav {
+    height: 75px;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+}
+.nav--button {
+    width: 100px;
+    height: 100%;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none; /* Add this line to remove the button border */
+}
+
+.nav--button::before {
+    content: "<"; /* Add this line to insert the "<" sign before the button text */
+    margin-right: 5px; /* Adjust the margin as needed */
+}

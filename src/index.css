@@ -3,3 +3,12 @@ body {
     background-size: 100% 100vh;
     background-repeat: no-repeat;
 }
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#root {
+    padding: 0;
+}

@@ -1,30 +1,58 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
+
 .main {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
+  width: 100%;
 }
-.main h1 {
-  font-size: 3rem;
-  color: #fff;
 
+.main--title {
+  color: #FFF;
+  font-feature-settings: 'cv06' on;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin: 0;
 }
-.buttons {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+
 .buttons {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 23px;
+  width: 55%;
+  max-width: 500px;
+  position: absolute;
+  bottom: 25%;
+}
+
+.button {
+  width: 200px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #0A0909;
+  border: none;
+  color: #FFF;
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #000;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.page {
+  width: 100%;
 }

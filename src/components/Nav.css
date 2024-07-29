@@ -1,13 +1,14 @@
 .nav {
     height: 75px;
     width: 100%;
-    background-color: blue;
+    background-color: transparent;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .nav--button {
-    width: 100px;
-    height: 100%;
-    background-color: red;
+    background-color: transparent;
     color: white;
     font-size: 20px;
     font-weight: 600;
@@ -15,10 +16,30 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border: none; /* Add this line to remove the button border */
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav--button::before {
-    content: "<"; /* Add this line to insert the "<" sign before the button text */
+     /* Add this line to insert the "<" sign before the button text */
     margin-right: 5px; /* Adjust the margin as needed */
+}
+
+.nav--icon {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    margin-right: 17px;
+    margin-left: 17px;
+}
+
+.nav--title {
+    color: #FFF;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }

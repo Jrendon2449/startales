@@ -7,8 +7,7 @@ function Science() {
 
     return (
         <div className="page science">
-            <Nav navigate={navigate} />
-        <h2>Science Page</h2>
+            <Nav title="Science" navigate={navigate} return_path={"/"}/>
         </div>
     );
 }

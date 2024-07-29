@@ -7,8 +7,7 @@ function Archive() {
 
     return (
         <div className="page story">
-            <Nav navigate={navigate} />
-        <h2>Archive Page</h2>
+            <Nav title="Archive" navigate={navigate} return_path={"/"}/>
         </div>
     );
 }

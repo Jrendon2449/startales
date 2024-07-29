@@ -7,8 +7,7 @@ function Story() {
 
   return (
     <div className="page story">
-        <Nav navigate={navigate} />
-      <h2>Story Page</h2>
+        <Nav title="Story" navigate={navigate} return_path={"/"}/>
     </div>
   );
 }

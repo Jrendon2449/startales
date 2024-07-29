@@ -2,6 +2,7 @@ body {
     background: linear-gradient(180deg, #2E3057 0%, #2B1D3E 100%);
     background-size: 100% 100vh;
     background-repeat: no-repeat;
+    font-family: 'Roboto Mono', monospace;
 }
 body {
     margin: 0;

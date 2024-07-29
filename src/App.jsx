@@ -7,10 +7,10 @@ import Star from './assets/Star.svg'
 import Story from './components/Story';
 import Science from './components/Science';
 import Archive from './components/Archive';
+import Background from './assets/background.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <Router>
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <h1 className="main--title">Star Tales</h1>
+              <h1 className="home--title">Star Tales</h1>
               <div className="buttons">
                 <Link to="/story"><Button name="Story" /></Link>
                 <Link to="/science"><Button name="Science" /></Link>
@@ -30,6 +30,7 @@ function App() {
           <Route path="/science" element={<Science />} />
           <Route path="/archive" element={<Archive />} />
         </Routes>
+        <img src={Background} className="background" alt="Background" />
       </div>
     </Router>
   )

@@ -8,7 +8,7 @@ export default function Nav(props) {
         <nav className="nav">
             <button 
                 className="nav--button" 
-                onClick={() => props.navigate('/')}
+                onClick={() => props.navigate(props.return_path)}
             >
                 <img src={back_button} alt="Back" className="nav--icon"/>
             </button>

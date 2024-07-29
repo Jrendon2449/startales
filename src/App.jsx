@@ -7,6 +7,7 @@ import Star from './assets/Star.svg'
 import Story from './components/Story';
 import Science from './components/Science';
 import Archive from './components/Archive';
+import Search from './components/Search'; // Import the Search component
 import Background from './assets/background.svg'
 import './App.css'
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/story" element={<Story />} />
           <Route path="/science" element={<Science />} />
           <Route path="/archive" element={<Archive />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
         <img src={Background} className="background" alt="Background" />
       </div>

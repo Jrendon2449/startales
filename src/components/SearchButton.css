@@ -1,17 +1,31 @@
 .search--button {
     background-color: transparent;
     border: none;
-    padding: 10;
+    padding: 10px;
     margin: 0;
+    margin-top: auto;
+    margin-bottom: 2vh;
 }
 
 .search--icon {
-    width: 50px;
-    height: 50px;
     background-color: transparent;
     cursor: pointer;
     border: none;
     transition: transform 0.1s, box-shadow 0.1s;
+}
+
+@media (min-width: 768px) {
+    .search--icon {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 767px) {
+    .search--icon {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 .search--icon:active {

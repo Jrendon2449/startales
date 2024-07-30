@@ -1,8 +1,14 @@
-.storyboard {
+.storyboard, .scienceboard {
     border-radius: 20px;
     background: rgba(218, 199, 242, 0.25);
     width: 55%;
-    height: 55%;
+    height: 65%;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media (max-width: 767px) {
+    .storyboard, .scienceboard {
+        width: 90%;
+    }
 }

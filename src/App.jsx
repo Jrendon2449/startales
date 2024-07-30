@@ -13,7 +13,7 @@ import './App.css'
 
 function App() {
 
-  return (
+  return ( // router specifies what path each component is rendered on
     <Router>
       <div className="main">
         <Routes>

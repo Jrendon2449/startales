@@ -9,6 +9,7 @@ import Science from './components/Science';
 import Archive from './components/Archive';
 import Search from './components/Search'; // Import the Search component
 import Background from './assets/background.svg'
+import AstronomyEvents from './components/Astronomy';
 import './App.css'
 
 function App() {

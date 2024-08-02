@@ -16,21 +16,20 @@ export default async function StoryTextGenerator(chapter, star, sentences, level
             chapter_number: chapter,
             star_name: star,
             number_of_sentences: sentences,
-            "reading_level": "",
-            "key_words": "",
-            "genre": "",
-            "mood": "",
-            "language": "",
-            "context": "",
-            "final_flag": "",
+            reading_level: level,
+            key_words: words,
+            genre: gen,
+            mood: mo,
+            language: lan,
+            context: con,
+            final_flag: flag,
         }),
         }
     ).then(response => response.text());
+
     return (
         <>
-            <button className="search--button" onClick={props.onClick}>
-                <img src={MagnifyingGlass} alt="Search" className="search--icon"/>
-            </button>
+            response
         </>
     )
 }

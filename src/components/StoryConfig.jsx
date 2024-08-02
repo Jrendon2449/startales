@@ -7,13 +7,6 @@ import GenerateStoryButton from './GenerateStory';
 function StoryConfig() {
   const navigate = useNavigate();
 
-  const handleSearchClick = () => {
-    navigate('/search', { state: { previousPage: 'Story' } });
-  };
-  const testingClick = () => {
-    console.log("clicked");
-  };
-
   return (
     <div className="page story">
         <Nav title="Story Configuration" navigate={navigate} return_path={"/"}/>
@@ -28,7 +21,6 @@ function StoryConfig() {
                 lan = "english"
                 con = ""
                 flag = "CONTINUING"
-                onClick = {testingClick}
         />
     </div>
   );

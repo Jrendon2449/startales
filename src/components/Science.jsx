@@ -13,7 +13,7 @@ function Science() {
 
   return (
     <div className="page science">
-      <Nav title="Science" navigate={navigate} return_path={"/"}/>
+      <Nav title="Science" navigate={navigate} return_path={"/science_overview"}/>
       <Scienceboard />
       <SearchButton onClick={handleSearchClick} />
     </div>

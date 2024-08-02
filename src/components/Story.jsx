@@ -8,7 +8,7 @@ function Story() {
   const navigate = useNavigate();
 
   const handleSearchClick = () => {
-    navigate('/search', { state: { previousPage: 'Story' } });
+    navigate('/search', { state: { previousPage: 'story' } });
   };
 
   return (

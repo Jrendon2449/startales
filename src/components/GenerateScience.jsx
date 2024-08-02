@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 const GenerateScienceButton = (props) => {
+    const navigate = useNavigate();
 
+    const dummyClick = () => {
+        console.log("clicked");
+        navigate('/science', { state: { previousPage: 'ScienceOverview' } });
+    }
     const handleClick = async () => {
-
         const response = await fetch(
             'https://noggin.rea.gent/added-hyena-6889',
             {
@@ -18,12 +23,15 @@ const GenerateScienceButton = (props) => {
             }),
             }
         ).then(response => response.text());
-        localStorage.setItem("Current Science", response);
+        let jsonObject = JSON.parse(response);
+        localStorage.setItem("Current Science", jsonObject.article);
+
+        navigate('/science', { state: { previousPage: 'ScienceOverview' } });
     };
 
     return (
         <div>
-            <Button onClick={handleClick} name="Generate"/>
+            <Button onClick={handleClick} name="Generate Science"/>
         </div>
     );
 };

@@ -1,20 +1,23 @@
-.storyboard, .scienceboard {
+.searchboard {
     border-radius: 20px;
-    background: rgba(218, 199, 242, 0.25);
+    background: transparent;
     width: 55%;
     height: 65%;
     margin-left: auto;
     margin-right: auto;
     color: white;
 }
+.searchboard {
+    overflow: auto;
+}
 
 @media (max-width: 767px) {
-    .storyboard, .scienceboard{
+    .searchboard {
         width: 90%;
     }
 }
 @media (max-width: 767px) {
-    .storyboard, .scienceboard{
+    .searchboard {
         width: 90%;
     }
 }

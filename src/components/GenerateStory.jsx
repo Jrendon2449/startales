@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 const GenerateStoryButton = (props) => {
+    const navigate = useNavigate();
 
+    const newClick = () => {
+        console.log("clicked");
+    }
     const handleClick = async () => {
+        console.log("clicked");
 
         const response = await fetch(
             'https://noggin.rea.gent/architectural-gerbil-4359',
@@ -28,11 +34,13 @@ const GenerateStoryButton = (props) => {
             }
         ).then(response => response.text());
         localStorage.setItem("Current Story", response);
+
+        navigate('/story', { state: { previousPage: 'StoryConfig' } });
     };
 
     return (
         <div>
-            <Button onClick={handleClick} name="Generate"/>
+            <Button onClick={handleClick} name="Generate Story"/>
         </div>
     );
 };

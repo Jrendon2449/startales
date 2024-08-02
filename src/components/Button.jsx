@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 export default function Button(props) {
     return (
-        <button class="button">
+        <button className="button" onClick={props.onClick}>
             {props.name}
         </button>
     )

@@ -11,6 +11,7 @@ import Search from './components/Search'; // Import the Search component
 import Background from './assets/background.svg'
 import Find from './components/Find'
 import './App.css'
+import StoryConfig from './components/StoryConfig';
 
 function App() {
 
@@ -22,13 +23,14 @@ function App() {
             <>
               <h1 className="home--title">Star Tales</h1>
               <div className="buttons">
-                <Link to="/story"><Button name="Story" /></Link>
+                <Link to="/story_config"><Button name="Story" /></Link>
                 <Link to="/science"><Button name="Science" /></Link>
                 <Link to="/archive"><Button name="Archive" /></Link>
               </div>
             </>
           } />
           <Route path="/story" element={<Story />} />
+          <Route path="/story_config" element={<StoryConfig />} />
           <Route path="/science" element={<Science />} />
           <Route path="/archive" element={<Archive />} />
           <Route path="/search" element={<Search />} />

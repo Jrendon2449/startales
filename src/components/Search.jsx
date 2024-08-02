@@ -9,7 +9,8 @@ function Search() {
   const previousPage = location.state?.previousPage || '/';
 
   const handleReturn = () => {
-    navigate(previousPage === 'Science' ? '/science' : '/story');
+    console.log(previousPage);
+    navigate(previousPage === 'science' ? '/science' : '/story');
   };
 
   return (

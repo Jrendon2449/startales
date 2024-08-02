@@ -13,7 +13,7 @@ function Story() {
 
   return (
     <div className="page story">
-      <Nav title="Story" navigate={navigate} return_path={"/"}/>
+      <Nav title="Story" navigate={navigate} return_path={"/story_config"}/>
       <Storyboard />
       <SearchButton onClick={handleSearchClick} />
     </div>

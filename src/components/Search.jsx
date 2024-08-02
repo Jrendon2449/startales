@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Nav from './Nav';
+import Searchboard from './Searchboard';
 
 function Search() {
   const location = useLocation();
@@ -14,6 +15,7 @@ function Search() {
   return (
     <div className="page search">
       <Nav title="Search" navigate={handleReturn} return_path={previousPage}/>
+      <Searchboard />
     </div>
   );
 }

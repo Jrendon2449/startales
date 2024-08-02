@@ -21,3 +21,38 @@
         width: 90%;
     }
 }
+
+.search-celestial-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgba(218, 199, 242, 0.25);
+    color: white;
+    cursor: pointer;
+    transition: background 0.1s;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.search-celestial-body h2, p {
+    margin: 0;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.search-celestial-body--button {
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    padding: 0;
+}

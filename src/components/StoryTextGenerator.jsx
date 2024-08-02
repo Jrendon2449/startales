@@ -1,35 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Button from './Button';
 
-export default async function StoryTextGenerator(chapter, star, sentences, level, words, gen, mo, lan, con, flag) {
-    // import fetch from 'node-fetch'; // for node.js
+export default function StoryTextGenerator(props) {
+    const [response, setResponse] = useState('');
 
-    const response = await fetch(
-        'https://noggin.rea.gent/architectural-gerbil-4359',
-        {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer rg_v1_jgqdhorjipcg39we4ugyuhskn6f4a7976qns_ngk',
-        },
-        body: JSON.stringify({
-            // fill variables here.
-            chapter_number: chapter,
-            star_name: star,
-            number_of_sentences: sentences,
-            reading_level: level,
-            key_words: words,
-            genre: gen,
-            mood: mo,
-            language: lan,
-            context: con,
-            final_flag: flag,
-        }),
-        }
-    ).then(response => response.text());
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const result = await fetch(
+    //             'https://noggin.rea.gent/architectural-gerbil-4359',
+    //             {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     Authorization: 'Bearer rg_v1_jgqdhorjipcg39we4ugyuhskn6f4a7976qns_ngk',
+    //                 },
+    //                 body: JSON.stringify({
+    //                     // fill variables here.
+    //                     chapter_number: props.chapter,
+    //                     star_name: props.star,
+    //                     number_of_sentences: props.sentences,
+    //                     reading_level: props.level,
+    //                     key_words: props.words,
+    //                     genre: props.gen,
+    //                     mood: props.mo,
+    //                     language: props.lan,
+    //                     context: props.con,
+    //                     final_flag: props.flag,
+    //                 }),
+    //             }
+    //         ).then(response => response.text());
+
+    //         setResponse(result);
+    //     };
+
+    //     fetchData();
+    // }, []); // dependencies
 
     return (
         <>
-            response
+            <Button name="Generate Story" />
+            {response}
         </>
-    )
+    );
 }

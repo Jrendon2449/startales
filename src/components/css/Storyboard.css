@@ -1,27 +1,108 @@
-.storyboard, .scienceboard {
-    border-radius: 20px;
-    background: rgba(218, 199, 242, 0.25);
-    width: 55%;
-    height: 65%;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-    overflow: auto;
+.storyboard,
+.scienceboard,
+.storyConfigboard {
+  border-radius: 20px;
+  background: rgba(218, 199, 242, 0.25);
+  width: 55%;
+  height: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  overflow: auto;
 }
 
 @media (max-width: 767px) {
-    .storyboard, .scienceboard{
-        width: 90%;
-    }
+  .storyboard,
+  .scienceboard,
+  .storyConfigboard {
+    width: 90%;
+  }
 }
 @media (max-width: 767px) {
-    .storyboard, .scienceboard{
-        width: 90%;
-    }
+  .storyboard,
+  .scienceboard,
+  .storyConfigboard {
+    width: 90%;
+  }
 }
 
 .storyboard--nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+span {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 1.3rem;
+}
+
+.storyConfigboard {
+  margin-bottom: 5%;
+}
+
+.starTitle {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 2rem;
+}
+
+.slider-container,
+.keywordInput-container,
+.Selector-container {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.slider {
+  width: 100%;
+  -webkit-appearance: none; /* Hides the default appearance */
+  color: black;
+  height: 8px;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #9c8ecf;
+  cursor: pointer;
+}
+
+.sliderTitle,
+.keywordTitle {
+  text-align: left;
+  margin-top: 10%;
+  margin-bottom: 2%;
+  font-size: 1rem;
+}
+
+input {
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  border: none;
+}
+
+.Selector-container {
+  margin-top: 10%;
+}
+
+.genreSelector {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

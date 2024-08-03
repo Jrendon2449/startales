@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import Nav from '../Nav';
-import SearchButton from '../search/SearchButton';
-import Storyboard from './Storyboard';
-import { currentState } from '../../App';
+import React, { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import Nav from "../Nav";
+import Button from "../Button";
+import SearchButton from "../search/SearchButton";
+import Storyboard from "./Storyboard";
+import { currentState } from "../../App";
 
 function Story() {
   const navigate = useNavigate();
@@ -11,17 +12,20 @@ function Story() {
   const { state, setState } = React.useContext(currentState);
 
   useEffect(() => {
-    setState('/story');
+    setState("/story");
   }, [setState]);
 
   const handleSearchClick = () => {
-    navigate('/search', { state: { previousPage: 'story' } });
+    navigate("/search", { state: { previousPage: "story" } });
   };
 
   return (
     <div className="page story">
-      <Nav title="Story" navigate={navigate} return_path={"/"}/>
-      <Storyboard />
+      <Nav title="Story" navigate={navigate} return_path={"/"} />
+      {/**<Storyboard /> **/}
+      <Link to="/story_config">
+        <Button name="Story Configuration" />
+      </Link>
       <SearchButton onClick={handleSearchClick} />
     </div>
   );

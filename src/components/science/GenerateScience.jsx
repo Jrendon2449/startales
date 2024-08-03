@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from './Button';
+import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 
 const GenerateScienceButton = (props) => {
@@ -7,7 +7,7 @@ const GenerateScienceButton = (props) => {
 
     const dummyClick = () => {
         console.log("clicked");
-        navigate('/science', { state: { previousPage: 'ScienceOverview' } });
+        navigate('/science');
     }
     const handleClick = async () => {
         const response = await fetch(
@@ -26,12 +26,12 @@ const GenerateScienceButton = (props) => {
         let jsonObject = JSON.parse(response);
         localStorage.setItem("Current Science", jsonObject.article);
 
-        navigate('/science', { state: { previousPage: 'ScienceOverview' } });
+        navigate('/science');
     };
 
     return (
         <div>
-            <Button onClick={handleClick} name="Generate Science"/>
+            <Button onClick={dummyClick} name="Generate Science"/>
         </div>
     );
 };

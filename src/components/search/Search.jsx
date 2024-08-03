@@ -1,21 +1,22 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Nav from './Nav';
+import Nav from '../Nav';
 import Searchboard from './Searchboard';
+import { currentState } from '../../App';
 
 function Search() {
+  const {state, setState} = React.useContext(currentState);
   const location = useLocation();
   const navigate = useNavigate();
-  const previousPage = location.state?.previousPage || '/';
 
   const handleReturn = () => {
-    console.log(previousPage);
-    navigate(previousPage === 'science' ? '/science' : '/story');
+    console.log(state);
+    navigate(state);
   };
 
   return (
     <div className="page search">
-      <Nav title="Search" navigate={handleReturn} return_path={previousPage}/>
+      <Nav title="Search" navigate={handleReturn}/>
       <Searchboard />
     </div>
   );

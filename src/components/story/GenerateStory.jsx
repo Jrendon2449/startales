@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from './Button';
+import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 
 const GenerateStoryButton = (props) => {
@@ -7,7 +7,7 @@ const GenerateStoryButton = (props) => {
 
     const dummyClick = () => {
         console.log("clicked");
-        navigate('/story', { state: { previousPage: 'StoryConfig' } });
+        navigate('/story');
     }
     const handleClick = async () => {
         const response = await fetch(
@@ -32,9 +32,19 @@ const GenerateStoryButton = (props) => {
             }),
             }
         ).then(response => response.text());
-        localStorage.setItem("Current Story", response);
+        
+        let story = JSON.parse(localStorage.getItem("Current Story")); //existing story
+        if (story == null) {
+            story = [response];
+        }
+        else {
+            story.push(response);
+        }
 
-        navigate('/story', { state: { previousPage: 'StoryConfig' } });
+        let myStrStory = JSON.stringify(story);
+        localStorage.setItem("Current Story", myStrStory);
+
+        navigate('/story');
     };
 
     return (

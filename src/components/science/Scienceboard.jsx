@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Storyboard.css';
+import '../css/Storyboard.css';
 
 export default function Scienceboard() {
 
@@ -15,9 +15,8 @@ export default function Scienceboard() {
             document.getElementById("text").innerHTML = htmlText;
         }
     }, []); // Empty dependency array ensures this runs only once
-    
     return (
-        <div className="storyboard">
+        <div className="scienceboard">
             <h1>{starText}</h1>
             <p id="text"></p>
         </div>

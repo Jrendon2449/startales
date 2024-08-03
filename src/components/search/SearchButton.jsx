@@ -1,7 +1,6 @@
 import React from 'react';
-import MagnifyingGlass from '../assets/magnifying_glass.svg';
-import Search from '../assets/search.svg';
-import './SearchButton.css';
+import MagnifyingGlass from '../../assets/magnifying_glass.svg';
+import '../css/SearchButton.css';
 
 export default function SearchButton(props) {
 

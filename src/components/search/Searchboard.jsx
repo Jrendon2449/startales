@@ -1,13 +1,13 @@
 import React from 'react';
-import "./Searchboard.css";
-import celestialBodiesJSON from '../data.js'; // this is fake data for now by the way
-import rightArrow from '../assets/right_arrow.svg';
+import "../css/Searchboard.css";
+import celestialBodiesJSON from '../../data.js'; // this is fake data for now by the way
+import rightArrow from '../../assets/right_arrow.svg';
 import { useNavigate } from 'react-router-dom';
 
 export default function Searchboard(props) {
     const celestialBodies = JSON.parse(celestialBodiesJSON);
     const navigate = useNavigate();
-
+    
     const createCelestialBody = (celestialBody) => {
         const handleSearchClick = () => {
             navigate('/find', { state: { celestialBody} });

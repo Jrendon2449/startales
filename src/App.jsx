@@ -1,48 +1,50 @@
+// imports
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Button from './components/Button'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Star from './assets/Star.svg'
-import Story from './components/Story';
-import Science from './components/Science';
+import React from 'react';
+// components
+import Home from './components/Home';
+import Story from './components/story/Story';
+import Science from './components/science/Science';
 import Archive from './components/Archive';
-import Search from './components/Search'; // Import the Search component
+import Search from './components/search/Search';
+import Find from './components/search/Find'
+import Found from './components/search/Found'
+import StoryConfig from './components/story/StoryConfig';
+import ScienceOverview from './components/science/ScienceOverview';
+// assets
 import Background from './assets/background.svg'
-import Find from './components/Find'
 import './App.css'
-import StoryConfig from './components/StoryConfig';
-import ScienceOverview from './components/ScienceOverview';
 
+// currentState holds the current state of the app: /science or /story or /archive
+const currentState = React.createContext();
+
+// App is the main component that holds the router and the main components
 function App() {
+  const [state, setState] = useState('/');
 
-  return ( // router specifies what path each component is rendered on
+  return ( 
+  <currentState.Provider value={{ state, setState }}>
     <Router>
       <div className="main">
         <Routes>
-          <Route path="/" element={
-            <>
-              <h1 className="home--title">Star Tales</h1>
-              <div className="buttons">
-                <Link to="/story_config"><Button name="Story" /></Link>
-                <Link to="/science_overview"><Button name="Science" /></Link>
-                <Link to="/archive"><Button name="Archive" /></Link>
-              </div>
-            </>
-          } />
+          <Route path="/" element={<Home />} />
           <Route path="/story" element={<Story />} />
           <Route path="/story_config" element={<StoryConfig />} />
           <Route path="/science" element={<Science />} />
           <Route path="/science_overview" element={<ScienceOverview />} />
-          <Route path="/archive" element={<Archive />} />
           <Route path="/search" element={<Search />} />
-          <Route path="*" element={<h1>404 Not Found</h1>} />
           <Route path="/find" element={<Find />} />
+          <Route path="/found" element={<Found />} />
+          <Route path="/archive" element={<Archive />} />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
         <img src={Background} className="background" alt="Background" />
       </div>
     </Router>
+    </currentState.Provider>
   )
 }
 
 export default App
+export { currentState }

@@ -6,6 +6,7 @@
     margin-left: auto;
     margin-right: auto;
     color: white;
+    overflow: auto;
 }
 
 @media (max-width: 767px) {
@@ -17,4 +18,10 @@
     .storyboard, .scienceboard{
         width: 90%;
     }
+}
+
+.storyboard--nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
 }

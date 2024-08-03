@@ -9,6 +9,8 @@ import { currentState } from "../../App";
 function Story() {
   const navigate = useNavigate();
 
+  const [story, setStory] = React.useState([]);
+
   const { state, setState } = React.useContext(currentState);
 
   useEffect(() => {
@@ -22,10 +24,7 @@ function Story() {
   return (
     <div className="page story">
       <Nav title="Story" navigate={navigate} return_path={"/"} />
-      {/**<Storyboard /> **/}
-      <Link to="/story_config">
-        <Button name="Story Configuration" />
-      </Link>
+      <Storyboard />
       <SearchButton onClick={handleSearchClick} />
     </div>
   );

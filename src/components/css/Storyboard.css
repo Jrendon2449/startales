@@ -11,6 +11,10 @@
   overflow: auto;
 }
 
+.story--paragraph {
+  margin: 5%;
+}
+
 @media (max-width: 767px) {
   .storyboard,
   .scienceboard,
@@ -64,6 +68,7 @@ span {
   background-color: #d9d9d9;
   border-radius: 5px;
 }
+
 
 .slider:hover {
   opacity: 1;

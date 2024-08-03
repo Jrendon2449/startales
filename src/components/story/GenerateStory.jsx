@@ -4,12 +4,24 @@ import { useNavigate } from 'react-router-dom';
 
 const GenerateStoryButton = (props) => {
     const navigate = useNavigate();
+    const [story, setStory] = useState([]);
+    const [buttonState, setButtonState] = useState("Generate Story");
+    let loading = false;
+    React.useEffect(() => {
+        
+    }, []);
 
     const dummyClick = () => {
         console.log("clicked");
         navigate('/story');
     }
     const handleClick = async () => {
+        
+        let storedStory = localStorage.getItem("Current Story");
+        if (storedStory) {
+            storedStory = JSON.stringify(JSON.parse(storedStory));
+        }
+        setButtonState("Generating Story...");
         const response = await fetch(
             'https://noggin.rea.gent/architectural-gerbil-4359',
             {
@@ -27,7 +39,7 @@ const GenerateStoryButton = (props) => {
                 genre: props.gen,
                 mood: props.mo,
                 language: props.lan,
-                context: props.con,
+                context: storedStory,
                 final_flag: props.flag,
             }),
             }
@@ -43,13 +55,12 @@ const GenerateStoryButton = (props) => {
 
         let myStrStory = JSON.stringify(story);
         localStorage.setItem("Current Story", myStrStory);
-
         navigate('/story');
     };
 
     return (
         <div>
-            <Button onClick={dummyClick} name="Generate Story"/>
+            <Button onClick={handleClick} name={buttonState}/>
         </div>
     );
 };

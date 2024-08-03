@@ -22,7 +22,6 @@ const currentState = React.createContext();
 // App is the main component that holds the router and the main components
 function App() {
   const [state, setState] = useState("/");
-
   return (
     <currentState.Provider value={{ state, setState }}>
       <Router>

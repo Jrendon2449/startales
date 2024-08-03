@@ -7,14 +7,22 @@ import '../css/Storyboard.css';
 export default function Storyboard() {
     const [storyText, setStoryText] = React.useState('');
     const [chapterText, setChapterText] = React.useState('');
-    const [index, setIndex] = React.useState(JSON.parse(localStorage.getItem('Current Story')).length - 1);    
+    const [index, setIndex] = React.useState(() => {
+        const storedStory = localStorage.getItem('Current Story');
+        if (storedStory) {
+            const parsedStory = JSON.parse(storedStory);
+            return parsedStory.length - 1;
+        }
+        return 0;
+    });
     useEffect(() => {
         if (localStorage.getItem("Current Story") != null) {
             let myArrayString = localStorage.getItem('Current Story');
             let myArray = JSON.parse(myArrayString);
             let arr = myArray[index].split("\n");
+            console.log(arr);
             setChapterText(arr[0]);
-            setStoryText(arr[arr.length - 1]);
+            setStoryText(arr.slice(1).map((text) => <p className="story--paragraph">{text}</p>));
         }
         else {
             setChapterText("No Story Yet, Start Exploring!");

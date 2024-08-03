@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Nav from "../Nav";
 import SearchButton from "../search/SearchButton";
 import GenerateStoryButton from "../story/GenerateStory";
@@ -8,17 +8,35 @@ import Select from "react-select";
 
 function StoryConfig() {
   const navigate = useNavigate();
-  const [formData, setFormData] = React.useState({
-    star_name: "",
-  });
+  const location = useLocation();
+  const celestialBody = location.state.celestialBody;
 
-  const handleChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.placeholder]: event.target.value,
-    });
+  const handleReturn = () => {
+    navigate("/found", { state: { celestialBody } });
   };
 
+  const [formData, setFormData] = React.useState({
+    star_name: celestialBody.name,
+    story_length: 10,
+    reading_level: 5,
+    specific_words: "",
+    genre: null,
+    mood: null,
+    language: null,
+  });
+
+  const handleInputChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const handleSelectChange = (name) => (selectedOption) => {
+    setFormData({
+      ...formData,
+      [name]: selectedOption,
+    });
+  };
   const genreOptions = [
     { value: "Fantasy", label: "Fantasy" },
     { value: "Comedy", label: "Comedy" },
@@ -53,7 +71,7 @@ function StoryConfig() {
   };
   return (
     <div className="page story">
-      <Nav title="Story Configuration" navigate={navigate} return_path={"/"} />
+      <Nav title="Story Configuration" navigate={handleReturn} return_path={"/found"} />
       <span>Generating Chapter 1 for:</span>
       <div className="storyConfigboard">
         {/** 
@@ -68,46 +86,80 @@ function StoryConfig() {
         <p className="starTitle">Star Name</p>
         <span>Configure Story</span>
         <div className="slider-container">
-          <p className="sliderTitle">Length of Story:</p>
-          <input type="range" min="0" max="100" className="slider" />
-          <p className="sliderTitle">Reading Level:</p>
-          <input type="range" min="0" max="100" className="slider" />
-        </div>
-        <div className="keywordInput-container">
-          <p className="keywordTitle">Include Specific Words:</p>
-          <input
-            className="keywordInput"
-            type="text"
-            placeholder="example: Joshy, Willy"
+        <p className="sliderTitle">Length of Chapter (sentences): {formData.story_length}</p>
+        <input
+          type="range"
+          min="1"
+          max="20"
+          name="story_length"
+          value={formData.story_length}
+          onChange={handleInputChange}
+          className="slider"
+        />
+        <p className="sliderTitle">Reading Level (grade): {formData.reading_level}</p>
+        <input
+          type="range"
+          min="1"
+          max="13"
+          name="reading_level"
+          value={formData.reading_level}
+          onChange={handleInputChange}
+          className="slider"
+        />
+      </div>
+      <div className="keywordInput-container">
+        <p className="keywordTitle">Include Specific Words:</p>
+        <input
+          className="keywordInput"
+          type="text"
+          name="specific_words"
+          value={formData.specific_words}
+          onChange={handleInputChange}
+          placeholder="example: Joshy, Willy"
+        />
+      </div>
+
+      <div className="Selector-container">
+        <div className="genreSelector">
+          <p className="genreTitle">Genre:</p>
+          <Select
+            options={genreOptions}
+            styles={customStyles}
+            value={formData.genre}
+            onChange={handleSelectChange('genre')}
           />
         </div>
-
-        <div className="Selector-container">
-          <div className="genreSelector">
-            <p className="genreTitle">Genre:</p>
-            <Select options={genreOptions} styles={customStyles} />
-          </div>
-          <div className="genreSelector">
-            <p className="genreTitle">Mood:</p>
-            <Select options={moodOptions} styles={customStyles} />
-          </div>
-          <div className="genreSelector">
-            <p className="genreTitle">Language:</p>
-            <Select options={languageOptions} styles={customStyles} />
-          </div>
+        <div className="genreSelector">
+          <p className="genreTitle">Mood:</p>
+          <Select
+            options={moodOptions}
+            styles={customStyles}
+            value={formData.mood}
+            onChange={handleSelectChange('mood')}
+          />
+        </div>
+        <div className="genreSelector">
+          <p className="genreTitle">Language:</p>
+          <Select
+            options={languageOptions}
+            styles={customStyles}
+            value={formData.language}
+            onChange={handleSelectChange('language')}
+          />
         </div>
       </div>
+      </div>
       <GenerateStoryButton
-        chapter="1"
+        chapter="2"
         star={formData.star_name}
-        sentences="5"
-        level="2"
-        words="Willy, Joshua"
-        gen="science-Fiction"
-        mo="happy"
-        lan="english"
-        con=""
-        flag="CONTINUING"
+        sentences= {formData.story_length}
+        level= {formData.reading_level}
+        words= {formData.specific_words}
+        gen= {formData.genre}
+        mo= {formData.mood}
+        lan= {formData.language}
+        con= "" 
+        flag= "CONTINUING"
       />
     </div>
   );

@@ -25,13 +25,24 @@ const GenerateScienceButton = (props) => {
         ).then(response => response.text());
         let jsonObject = JSON.parse(response);
         localStorage.setItem("Current Science", jsonObject.article);
+        
+        let science = JSON.parse(localStorage.getItem("Science List"));
+        if (science == null) {
+            science = [response];
+        }
+        else {
+            science.push(response);
+        }
+
+        let myStrScience = JSON.stringify(science);
+        localStorage.setItem("Science List", myStrScience);
 
         navigate('/science');
     };
 
     return (
         <div>
-            <Button onClick={dummyClick} name="Generate Science"/>
+            <Button onClick={handleClick} name="Generate Science"/>
         </div>
     );
 };

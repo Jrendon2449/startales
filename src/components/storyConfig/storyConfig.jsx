@@ -5,11 +5,18 @@ import SearchButton from "../search/SearchButton";
 import GenerateStoryButton from "../story/GenerateStory";
 import "../css/Storyboard.css";
 import Select from "react-select";
+import { genreOptions, moodOptions, languageOptions } from "../story/StoryParams";
 
 function StoryConfig() {
   const navigate = useNavigate();
   const location = useLocation();
   const celestialBody = location.state.celestialBody;
+
+  const [listLength, setListLength] = React.useState(0);
+  React.useEffect(() => {
+    const currentStory = JSON.parse(localStorage.getItem("Current Story"));
+    setListLength(currentStory ? currentStory.length : 0);
+  }, []);
 
   const handleReturn = () => {
     navigate("/found", { state: { celestialBody } });
@@ -37,23 +44,7 @@ function StoryConfig() {
       [name]: selectedOption,
     });
   };
-  const genreOptions = [
-    { value: "Fantasy", label: "Fantasy" },
-    { value: "Comedy", label: "Comedy" },
-    { value: "Horror", label: "Horror" },
-  ];
-
-  const moodOptions = [
-    { value: "Weird", label: "Weird" },
-    { value: "Shocking", label: "Shocking" },
-    { value: "Exciting", label: "Exciting" },
-  ];
-
-  const languageOptions = [
-    { value: "English", label: "English" },
-    { value: "Mandarin", label: "Mandarin" },
-    { value: "Spanish", label: "Spanish" },
-  ];
+  
 
   const customStyles = {
     control: (provided) => ({
@@ -72,7 +63,7 @@ function StoryConfig() {
   return (
     <div className="page story">
       <Nav title="Story Configuration" navigate={handleReturn} return_path={"/found"} />
-      <span>Generating Chapter 1 for:</span>
+      <span>Generating Chapter for:</span>
       <div className="storyConfigboard">
         {/** 
         <input
@@ -83,7 +74,7 @@ function StoryConfig() {
         />
         */}
 
-        <p className="starTitle">Star Name</p>
+        <p className="starTitle">{celestialBody.name}</p>
         <span>Configure Story</span>
         <div className="slider-container">
         <p className="sliderTitle">Length of Chapter (sentences): {formData.story_length}</p>
@@ -150,7 +141,7 @@ function StoryConfig() {
       </div>
       </div>
       <GenerateStoryButton
-        chapter="2"
+        chapter={listLength + 1}
         star={formData.star_name}
         sentences= {formData.story_length}
         level= {formData.reading_level}

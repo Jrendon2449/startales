@@ -4,6 +4,7 @@ import Nav from '../Nav';
 import { currentState } from '../../App';
 import Button from '../Button';
 import GenerateScienceButton from '../science/GenerateScience';
+import DeviceOrientation from '../Compass';
 export default function Found() {
     const {state, setState} = React.useContext(currentState);
 
@@ -24,6 +25,10 @@ export default function Found() {
         navigate(nextDest, { state: { celestialBody } });
     }
 
+    //testing
+    
+
+    //testing
     return (
         <div className="find page">
             <Nav title="You found:" navigate={handleReturn} return_path={"/find"}/>

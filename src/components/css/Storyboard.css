@@ -11,8 +11,18 @@
   overflow: auto;
 }
 
+#story--image {
+  max-width: 50%;
+  max-height: 25%;
+}
+
+.storyConfigboard {
+  overflow:visible;
+}
+
 .story--paragraph {
   margin: 5%;
+  text-align:justify;
 }
 
 @media (max-width: 767px) {

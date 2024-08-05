@@ -16,8 +16,7 @@ export default function ArchiveBoard(props) {
     const archiveStoryList = localStorage.getItem("Archive Story List") ? JSON.parse(localStorage.getItem("Archive Story List")) : [];
     const archiveImageList = localStorage.getItem("Archive Image List") ? JSON.parse(localStorage.getItem("Archive Image List")) : [];
     
-    const createArchiveList = (currentMetaDataString, currentStoryString, currentImageString) => {
-        const currentMetaData = JSON.parse(currentMetaDataString);
+    const createArchiveList = (currentMetaData, currentStoryString, currentImageString) => {
         const currentStory = JSON.parse(currentStoryString);
         const currentImage = JSON.parse(currentImageString);
         const handleSearchClick = () => {
@@ -25,13 +24,14 @@ export default function ArchiveBoard(props) {
             localStorage.setItem("Current Archive Image", currentImageString);
             navigate('/archive_story');
         };
+        console.log(currentMetaData["stars"]);
+
         return (
             <div className="search-celestial-body">
                 <div className="search-celestial-body-text">
                     <h2>Story {currentMetaData["date"]}</h2>
-                    <p>Number of Chapters: {currentMetaData["number_of_chapters"]}</p>
-                    <p>Stars Visited: </p>
-                    <p>Type: </p>
+                    <p>Number of Chapters: {currentStory.length}</p>
+                    <p>Stars Visited: {currentMetaData["stars"].join(', ')}</p>
                 </div>
                 <button 
                     className="search-celestial-body--button" 

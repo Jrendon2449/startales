@@ -29,17 +29,13 @@ const GenerateStoryButton = (props) => {
         if (metaData == null) {
             metaData = [];
         }
-        const currentDate = new Date();
-        const formattedDate = currentDate.toLocaleDateString();
-        let curData = {
-            date: formattedDate,
-            number_of_chapters: props.chapter,
-            visited_star: props.star
+        if (!metaData.includes(props.star)) {
+            metaData.push(props.star);
         }
-        metaData.push(curData);
+        console.log(metaData);
 
         let myStrMetaData = JSON.stringify(metaData);
-        localStorage.setItem("Current MetaData", myStrMetaData);
+        localStorage.setItem("Current Metadata", myStrMetaData);
     }
 
     const dummyClick = () => {

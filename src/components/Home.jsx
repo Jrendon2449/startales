@@ -18,6 +18,7 @@ export default function Home() {
     return goFullscreen; // Return the function
   };
   const goFullScreen = FullscreenButton();
+  //localStorage.clear();
   return (
     <>
       <h1 className="home--title">Star Tales</h1>

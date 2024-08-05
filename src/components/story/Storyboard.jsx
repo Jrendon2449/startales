@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import back_button from '../../assets/back_button.svg';
 import rightArrow from '../../assets/right_arrow.svg';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -14,6 +14,17 @@ export default function Storyboard() {
     const [storyImage, setStoryImage] = React.useState('');
     const [storyLength, setStoryLength] = React.useState(0);
     const [index, setIndex] = React.useState(storyLength);
+
+    const [imageLoaded, setImageLoaded] = useState(false);
+    useEffect(() => {
+        if (storyImage) {
+            const img = new Image();
+            img.src = storyImage;
+            img.onload = () => setImageLoaded(true);
+            img.onerror = () => setImageLoaded(false);
+        }
+    }, [storyImage]);
+
     useEffect(() => {
         if (localStorage.getItem("Current Story") != null) {
             let myArrayString = localStorage.getItem('Current Story');
@@ -69,8 +80,18 @@ export default function Storyboard() {
         if (localStorage.getItem("Archive Metadata List")) {
             archiveMetaData = JSON.parse(localStorage.getItem("Archive Metadata List"));
         }
-        archiveMetaData.push(localStorage.getItem("Current Metadata"));
+        let curDate = new Date();
+        let currentMetaData = [];
+        if (localStorage.getItem("Current Metadata")) {
+            currentMetaData = JSON.parse(localStorage.getItem("Current Metadata"));
+        }
+        let currentData = {
+            "date": curDate.toLocaleDateString(),
+            "stars": currentMetaData
+        };
+        archiveMetaData.push(currentData);
         localStorage.setItem("Archive Metadata List", JSON.stringify(archiveMetaData));
+         console.log(currentData["stars"]);
 
         if (localStorage.getItem("Archive Story List")) {
             archiveStory = JSON.parse(localStorage.getItem("Archive Story List"));
@@ -94,7 +115,12 @@ export default function Storyboard() {
         <>
             <div className="storyboard">
                 <h1>{chapterText}</h1>
-                <img src={storyImage} alt="Story Image" id="story--image"/>
+                {imageLoaded ? (
+                    <img src={storyImage} alt="Story Image" id="story--image"/>
+                ) : (
+                    <p>Loading image...</p>
+                )}
+                {/* <img src={storyImage} alt="Story Image" id="story--image"/> */}
                 <p>{storyText}</p>
             </div>
             <div className="storyboard--nav">

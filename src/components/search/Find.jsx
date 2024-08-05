@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Nav from '../Nav';
 import Button from '../Button';
+import DeviceOrientation from '../DeviceOrientation';
 
 export default function Find() {
     const navigate = useNavigate();
@@ -17,8 +18,8 @@ export default function Find() {
 
     return (
         <div className="find page">
-            <Nav title="Find" navigate={navigate} return_path={"/search"}/>
-            <h1>Find {celestialBody.name}</h1>
+            <Nav title={`Finding ${celestialBody.name}`} navigate={navigate} return_path={"/search"}/>
+            <DeviceOrientation />
             <Button onClick={foundClick} name="Found"/>
         </div>
     )

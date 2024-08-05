@@ -6,12 +6,13 @@ import React from "react";
 import Home from "./components/Home";
 import Story from "./components/story/Story";
 import Science from "./components/science/Science";
-import Archive from "./components/Archive";
+import Archive from "./components/archive/Archive";
 import Search from "./components/search/Search";
 import Find from "./components/search/Find";
 import Found from "./components/search/Found";
 import StoryConfig from "./components/storyConfig/storyConfig";
 import ScienceOverview from "./components/science/ScienceOverview";
+import ArchiveStoryView from "./components/archive/ArchiveStoryView";
 // assets
 import Background from "./assets/background.svg";
 import "./App.css";
@@ -36,6 +37,7 @@ function App() {
             <Route path="/find" element={<Find />} />
             <Route path="/found" element={<Found />} />
             <Route path="/archive" element={<Archive />} />
+            <Route path="/archive_story" element={<ArchiveStoryView />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
           <img src={Background} className="background" alt="Background" />

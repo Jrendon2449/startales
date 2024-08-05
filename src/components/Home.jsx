@@ -15,6 +15,7 @@ export default function Home() {
         document.documentElement.msRequestFullscreen();
       }
     }
+    return goFullscreen; // Return the function
   };
   const goFullScreen = FullscreenButton();
   return (

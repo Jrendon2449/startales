@@ -37,7 +37,7 @@ export default function Found() {
       const startCamera = async () => {
         try {
           const stream = await navigator.mediaDevices.getUserMedia({
-            video: true,
+            video: { facingMode: 'environment' } 
           });
           const video = document.getElementById("video");
           if (video) {

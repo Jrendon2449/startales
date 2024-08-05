@@ -24,6 +24,24 @@ const GenerateStoryButton = (props) => {
         localStorage.setItem("Story Images", myStrImages);      
     }
 
+    const addToMetaData = () => {
+        let metaData = JSON.parse(localStorage.getItem("Current Metadata"));
+        if (metaData == null) {
+            metaData = [];
+        }
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleDateString();
+        let curData = {
+            date: formattedDate,
+            number_of_chapters: props.chapter,
+            visited_star: props.star
+        }
+        metaData.push(curData);
+
+        let myStrMetaData = JSON.stringify(metaData);
+        localStorage.setItem("Current MetaData", myStrMetaData);
+    }
+
     const dummyClick = () => {
         console.log("clicked");
         navigate('/story');
@@ -67,6 +85,9 @@ const GenerateStoryButton = (props) => {
 
         let myStrStory = JSON.stringify(story);
         localStorage.setItem("Current Story", myStrStory);
+
+        addToMetaData();
+
         const fetchResults = async () => {
             try {
               const query = `${props.star} space object image`

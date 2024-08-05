@@ -7,32 +7,29 @@ import { useNavigate } from 'react-router-dom';
 import '../css/Storyboard.css';
 import Button from '../Button';
 
-export default function Storyboard() {
+export default function ArchiveStoryViewBoard() {
     const navigate = useNavigate();
     const [storyText, setStoryText] = React.useState('');
     const [chapterText, setChapterText] = React.useState('');
     const [storyImage, setStoryImage] = React.useState('');
     const [storyLength, setStoryLength] = React.useState(0);
-    const [index, setIndex] = React.useState(storyLength);
+    const [index, setIndex] = React.useState(0);
     useEffect(() => {
-        if (localStorage.getItem("Current Story") != null) {
-            let myArrayString = localStorage.getItem('Current Story');
+        if (localStorage.getItem("Current Archive Story") != null) {
+            let myArrayString = localStorage.getItem('Current Archive Story');
             let myArray = JSON.parse(myArrayString);
             setStoryLength(myArray.length);
         }
     },[]);
     useEffect(() => {
-        if (localStorage.getItem("Story Images") != null) {
-            let myArrayString = localStorage.getItem('Story Images');
+        if (localStorage.getItem("Current Archive Image") != null) {
+            let myArrayString = localStorage.getItem('Current Archive Image');
             let myArray = JSON.parse(myArrayString);
             let arr = myArray[index];
-            console.log(myArray);
-            console.log("YOOOHOOOOO");
-            console.log(index);
             setStoryImage(arr);
         }
-        if (localStorage.getItem("Current Story") != null) {
-            let myArrayString = localStorage.getItem('Current Story');
+        if (localStorage.getItem("Current Archive Story") != null) {
+            let myArrayString = localStorage.getItem('Current Archive Story');
             let myArray = JSON.parse(myArrayString);
             let arr = myArray[index].split("\n");
             console.log(arr);
@@ -40,12 +37,12 @@ export default function Storyboard() {
             setStoryText(arr.slice(1).map((text) => <p className="story--paragraph">{text}</p>));
         }
         else {
-            setChapterText("No Story Yet, Start Exploring!");
+            setChapterText("No Story Available");
         }
     }, [index]); // Empty dependency array ensures this runs only once
     const increment = () => {
         setIndex(index => {
-            let array = JSON.parse(localStorage.getItem('Current Story'));
+            let array = JSON.parse(localStorage.getItem('Current Archive Story'));
             if (array && index < array.length - 1) {
                 return index + 1;
             }
@@ -61,35 +58,6 @@ export default function Storyboard() {
         });
     }
 
-    const finishClick = () => {
-        let archiveMetaData = [];
-        let archiveStory = [];
-        let archiveImage = [];
-
-        if (localStorage.getItem("Archive Metadata List")) {
-            archiveMetaData = JSON.parse(localStorage.getItem("Archive Metadata List"));
-        }
-        archiveMetaData.push(localStorage.getItem("Current Metadata"));
-        localStorage.setItem("Archive Metadata List", JSON.stringify(archiveMetaData));
-
-        if (localStorage.getItem("Archive Story List")) {
-            archiveStory = JSON.parse(localStorage.getItem("Archive Story List"));
-        }
-        archiveStory.push(localStorage.getItem("Current Story"));
-        localStorage.setItem("Archive Story List", JSON.stringify(archiveStory));
-        
-        if (localStorage.getItem("Archive Image List")) {
-            archiveImage = JSON.parse(localStorage.getItem("Archive Image List"));
-        }
-        archiveImage.push(localStorage.getItem("Story Images"));
-        localStorage.setItem("Archive Image List", JSON.stringify(archiveImage));
-
-        localStorage.removeItem("Current Metadata");
-        localStorage.removeItem("Current Story");
-        localStorage.removeItem("Story Images");
-        navigate('/archive');
-    }
-
     return (
         <>
             <div className="storyboard">
@@ -100,7 +68,6 @@ export default function Storyboard() {
             <div className="storyboard--nav">
                 <img src={back_button} alt="Back" onClick={decrement} className="nav--icon"/>
                 <img src={rightArrow} alt="Next" onClick={increment} className="nav--icon"/>
-                <Button onClick={finishClick} name="Finish"/>
             </div>
         </>
     )

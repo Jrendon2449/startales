@@ -62,6 +62,6 @@ app.get('/api/v2/bodies/positions/', async (req, res) => {
 
 
 // Listens on Port 8000 for now
-https.createServer({ key, cert }, app).listen(PORT, '0.0.0.0', () => {
+https.createServer({ key, cert }, app).listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })

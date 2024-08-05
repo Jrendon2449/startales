@@ -11,6 +11,9 @@ function StoryConfig() {
   const navigate = useNavigate();
   const location = useLocation();
   const celestialBody = location.state.celestialBody;
+  const croppedFile = location.state.croppedFile;
+  
+  
 
   const [listLength, setListLength] = React.useState(0);
   React.useEffect(() => {
@@ -39,9 +42,10 @@ function StoryConfig() {
     });
   };
   const handleSelectChange = (name) => (selectedOption) => {
+    
     setFormData({
       ...formData,
-      [name]: selectedOption,
+      [name]: selectedOption.value,
     });
   };
   
@@ -116,8 +120,10 @@ function StoryConfig() {
           <Select
             options={genreOptions}
             styles={customStyles}
-            value={formData.genre}
+            value={formData.genre ? formData.genre.value : ""}
             onChange={handleSelectChange('genre')}
+            menuPlacement="top"
+            isSearchable={false}
           />
         </div>
         <div className="genreSelector">
@@ -125,8 +131,10 @@ function StoryConfig() {
           <Select
             options={moodOptions}
             styles={customStyles}
-            value={formData.mood}
+            value={formData.mood ? formData.mood.value : ""}
             onChange={handleSelectChange('mood')}
+            menuPlacement="top"
+            isSearchable={false}
           />
         </div>
         <div className="genreSelector">
@@ -134,8 +142,10 @@ function StoryConfig() {
           <Select
             options={languageOptions}
             styles={customStyles}
-            value={formData.language}
+            value={formData.language ? formData.language.value : ""}
             onChange={handleSelectChange('language')}
+            menuPlacement="top"
+            isSearchable={false}
           />
         </div>
       </div>
@@ -151,6 +161,7 @@ function StoryConfig() {
         lan= {formData.language}
         con= "" 
         flag= "CONTINUING"
+        img= {croppedFile}
       />
     </div>
   );

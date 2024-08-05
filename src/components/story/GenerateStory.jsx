@@ -20,7 +20,7 @@ const GenerateStoryButton = (props) => {
       storyImages.push(image);
     }
     let myStrImages = JSON.stringify(storyImages);
-    console.log(myStrImages);
+    
     localStorage.setItem("Story Images", myStrImages);
   };
 
@@ -32,14 +32,14 @@ const GenerateStoryButton = (props) => {
     if (!metaData.includes(props.star)) {
       metaData.push(props.star);
     }
-    console.log(metaData);
+    
 
     let myStrMetaData = JSON.stringify(metaData);
     localStorage.setItem("Current Metadata", myStrMetaData);
   };
 
   const dummyClick = () => {
-    console.log("clicked");
+    
     navigate("/story");
   };
   const handleClick = async () => {
@@ -84,23 +84,13 @@ const GenerateStoryButton = (props) => {
 
     addToMetaData();
 
-    const fetchResults = async () => {
-      try {
-        const query = `${props.star} space object image`;
-        const response = await fetch(
-          `https://www.googleapis.com/customsearch/v1?key=${api_actual}&cx=${searchID}&q=${props.star}&searchType=image`
-        );
-        const data = await response.json();
-        if (data.items && data.items.length > 0) {
-          setImage(data.items[0].link);
-          addToStoryImages(data.items[0].link);
-        }
-      } catch (error) {
-        console.error("Error fetching results:", error);
-      }
-    };
-    fetchResults();
-    navigate("/story");
+
+    if (props.img) {
+      console.log(props.img);
+      setImage(props.img);
+      addToStoryImages(props.img);
+      navigate("/story");
+    }
   };
 
   return (

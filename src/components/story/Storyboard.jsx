@@ -29,7 +29,11 @@ export default function Storyboard() {
         if (localStorage.getItem("Current Story") != null) {
             let myArrayString = localStorage.getItem('Current Story');
             let myArray = JSON.parse(myArrayString);
+            
+            
             setStoryLength(myArray.length);
+            setIndex(myArray.length-1);
+            
         }
     },[]);
     useEffect(() => {
@@ -37,16 +41,16 @@ export default function Storyboard() {
             let myArrayString = localStorage.getItem('Story Images');
             let myArray = JSON.parse(myArrayString);
             let arr = myArray[index];
-            console.log(myArray);
-            console.log("YOOOHOOOOO");
-            console.log(index);
+            
+            
+            
             setStoryImage(arr);
         }
         if (localStorage.getItem("Current Story") != null) {
             let myArrayString = localStorage.getItem('Current Story');
             let myArray = JSON.parse(myArrayString);
             let arr = myArray[index].split("\n");
-            console.log(arr);
+            
             setChapterText(arr[0]);
             setStoryText(arr.slice(1).map((text) => <p className="story--paragraph">{text}</p>));
         }
@@ -91,7 +95,7 @@ export default function Storyboard() {
         };
         archiveMetaData.push(currentData);
         localStorage.setItem("Archive Metadata List", JSON.stringify(archiveMetaData));
-         console.log(currentData["stars"]);
+         
 
         if (localStorage.getItem("Archive Story List")) {
             archiveStory = JSON.parse(localStorage.getItem("Archive Story List"));
@@ -118,7 +122,7 @@ export default function Storyboard() {
                 {imageLoaded ? (
                     <img src={storyImage} alt="Story Image" id="story--image"/>
                 ) : (
-                    <p>Loading image...</p>
+                    <p></p>
                 )}
                 {/* <img src={storyImage} alt="Story Image" id="story--image"/> */}
                 <p>{storyText}</p>

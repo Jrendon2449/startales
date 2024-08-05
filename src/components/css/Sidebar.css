@@ -1,0 +1,55 @@
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transition: 0.3s;
+    overflow-x: hidden;
+    background-color: #292755;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 15%;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    width: 250px;
+    height: 100%;
+    z-index: 1000;
+}
+
+.sidebar--button {
+    width: 100%;
+    background-color: #292755;
+    transition: background-color 0.3s;
+    margin-left: 10%;
+}
+.sidebar--text {
+    color: white;
+    font-size: 20px;
+}
+
+.sidebar--button:hover {
+    background-color: #1f1c4f;
+}
+
+.sidebar--close {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+.sidebar--close img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

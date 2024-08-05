@@ -32,7 +32,7 @@ export default function ArchiveStoryViewBoard() {
             let myArrayString = localStorage.getItem('Current Archive Story');
             let myArray = JSON.parse(myArrayString);
             let arr = myArray[index].split("\n");
-            console.log(arr);
+            
             setChapterText(arr[0]);
             setStoryText(arr.slice(1).map((text) => <p className="story--paragraph">{text}</p>));
         }
@@ -65,7 +65,7 @@ export default function ArchiveStoryViewBoard() {
                 <img src={storyImage} alt="Story Image" id="story--image"/>
                 <p>{storyText}</p>
             </div>
-            <div className="storyboard--nav">
+            <div className="archiveboard--nav">
                 <img src={back_button} alt="Back" onClick={decrement} className="nav--icon"/>
                 <img src={rightArrow} alt="Next" onClick={increment} className="nav--icon"/>
             </div>

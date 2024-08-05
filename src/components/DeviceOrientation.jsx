@@ -36,14 +36,14 @@ const DeviceOrientation = () => {
               window.addEventListener('deviceorientation', handleOrientation);
             }
           } else {
-            console.log('Permission not granted');
+            
           }
         } else if ('ondeviceorientationabsolute' in window) {
           window.addEventListener('deviceorientationabsolute', handleOrientation);
         } else if (window.DeviceOrientationEvent) {
           window.addEventListener('deviceorientation', handleOrientation);
         } else {
-          console.log('Device Orientation not supported');
+          
         }
       };
     

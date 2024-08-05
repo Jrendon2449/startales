@@ -11,7 +11,7 @@ function ArchiveStoryView() {
 
   return (
     <div className="page story">
-      <Nav title="Past Story" navigate={navigate} return_path={"/"} />
+      <Nav title="Past Story" navigate={navigate} return_path={"/archive"} />
       <ArchiveStoryViewBoard />
     </div>
   );

@@ -17,7 +17,7 @@
 }
 
 .storyConfigboard {
-  overflow:visible;
+  overflow: auto;
 }
 
 .story--paragraph {
@@ -44,6 +44,11 @@
   display: flex;
   justify-content: space-between;
   margin-top: auto;
+}
+.archiveboard--nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: auto;
 }
 
 span {
@@ -120,4 +125,10 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+#text {
+  text-align: justify;
+  width: 90%;
+  margin: auto;
 }

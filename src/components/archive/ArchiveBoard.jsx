@@ -24,7 +24,7 @@ export default function ArchiveBoard(props) {
             localStorage.setItem("Current Archive Image", currentImageString);
             navigate('/archive_story');
         };
-        console.log(currentMetaData["stars"]);
+        
 
         return (
             <div className="search-celestial-body">

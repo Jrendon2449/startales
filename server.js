@@ -55,7 +55,7 @@ app.get('/api/v2/bodies/positions/', async (req, res) => {
         });
         res.json(response.data);
     } catch (error) {
-        console.log(error.response.data);
+        
         res.status(500).send('Internal Server Error');
     }
 });
@@ -63,5 +63,5 @@ app.get('/api/v2/bodies/positions/', async (req, res) => {
 
 // Listens on Port 8000 for now
 https.createServer({ key, cert }, app).listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+    console.log(`Server is running on https://localhost:${PORT}`);
 })

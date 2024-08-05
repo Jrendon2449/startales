@@ -10,7 +10,7 @@ function Search() {
   const navigate = useNavigate();
 
   const handleReturn = () => {
-    console.log(state);
+    
     navigate(state);
   };
 

@@ -1,7 +1,8 @@
 // imports
+import React from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import React from "react";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 // components
 import Home from "./components/Home";
 import Story from "./components/story/Story";
@@ -23,12 +24,17 @@ const currentState = React.createContext();
 // App is the main component that holds the router and the main components
 function App() {
   const [state, setState] = useState("/");
+  const handle = useFullScreenHandle();
+  const goFullScreen = () => {
+    // handle.enter();
+  };
   return (
+    <FullScreen className="fullscreen" handle={handle}>
     <currentState.Provider value={{ state, setState }}>
       <Router>
         <div className="main">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home fullscreen={goFullScreen}/>} />
             <Route path="/story" element={<Story />} />
             <Route path="/story_config" element={<StoryConfig />} />
             <Route path="/science" element={<Science />} />
@@ -44,6 +50,7 @@ function App() {
         </div>
       </Router>
     </currentState.Provider>
+    </FullScreen>
   );
 }
 

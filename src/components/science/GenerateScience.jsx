@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 const GenerateScienceButton = (props) => {
     const navigate = useNavigate();
+    const [buttonState, setButtonState] = useState("Generate Science");
 
     const dummyClick = () => {
-        console.log("clicked");
+        
         navigate('/science');
     }
     const handleClick = async () => {
+        setButtonState("Generating Science...");
         const response = await fetch(
             'https://noggin.rea.gent/added-hyena-6889',
             {
@@ -42,7 +44,7 @@ const GenerateScienceButton = (props) => {
 
     return (
         <div>
-            <Button onClick={handleClick} name="Generate Science"/>
+            <Button onClick={handleClick} name={buttonState}/>
         </div>
     );
 };

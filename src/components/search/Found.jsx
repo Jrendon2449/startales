@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Nav from "../Nav";
 import { currentState } from "../../App";
@@ -10,6 +10,8 @@ import "../css/Found.css";
 export default function Found() {
   const { state, setState } = React.useContext(currentState);
   const [camera, setCamera] = useState(false);
+  const [file, setFile] = useState();
+  const fileInputRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
   const celestialBody = location.state.celestialBody;
@@ -32,12 +34,16 @@ export default function Found() {
     //console.log(camera);
   };
 
+  const ImageUpload = (event) => {
+    setFile(URL.createObjectURL(event.target.files[0]));
+  };
+
   useEffect(() => {
     if (camera) {
       const startCamera = async () => {
         try {
           const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: 'environment' } 
+            video: { facingMode: "environment" },
           });
           const video = document.getElementById("video");
           if (video) {
@@ -63,19 +69,33 @@ export default function Found() {
     //const dataUrl = canvas.toDataURL("image/jpeg");
     close();
   };
+
+  const handleCancel = (close) => {
+    close();
+  };
+
   return (
     <div className="find page">
       <Nav title="You found:" navigate={handleReturn} return_path={"/find"} />
       <h1>{celestialBody.name}</h1>
       <div className="buttonsContainer">
-        <Button onClick={generateStory} name="Upload Photo" />
+        <input
+          type="file"
+          onChange={ImageUpload}
+          multiple={false}
+          ref={fileInputRef}
+          style={{ display: "none" }}
+        ></input>
+        <Button
+          onClick={() => fileInputRef.current.click()}
+          name="Upload Image"
+        />
         <Popup trigger={<Button name="Take Photo" />} modal nested>
           {(close) => (
             <div className="popup">
               <div className="uploadPhoto">
                 <video id="video" autoPlay></video>
               </div>
-
               <div className="buttonsContainer">
                 <Button onClick={handleCamera} name="Start Recording" />
                 <Button
@@ -83,6 +103,12 @@ export default function Found() {
                   Close
                   modal
                   name="Capture"
+                />{" "}
+                <Button
+                  onClick={() => handleCancel(close)}
+                  Close
+                  modal
+                  name="Cancel"
                 />
               </div>
             </div>
@@ -91,7 +117,7 @@ export default function Found() {
         <Button onClick={generateStory} name="Generate Photo (AI)" />
       </div>
 
-      <img className="picture" id="picture"></img>
+      <img className="picture" id="picture" src={file}></img>
 
       {state === "/story" ? (
         <Button onClick={generateStory} name="Add Story" />

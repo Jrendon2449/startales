@@ -11,14 +11,15 @@ export default function Storyboard() {
     const [storyText, setStoryText] = React.useState('');
     const [chapterText, setChapterText] = React.useState('');
     const [storyImage, setStoryImage] = React.useState('');
-    const [index, setIndex] = React.useState(() => {
-        const storedStory = localStorage.getItem('Current Story');
-        if (storedStory) {
-            const parsedStory = JSON.parse(storedStory);
-            return parsedStory.length - 1;
+    const [storyLength, setStoryLength] = React.useState(0);
+    const [index, setIndex] = React.useState(storyLength);
+    useEffect(() => {
+        if (localStorage.getItem("Current Story") != null) {
+            let myArrayString = localStorage.getItem('Current Story');
+            let myArray = JSON.parse(myArrayString);
+            setStoryLength(myArray.length);
         }
-        return 0;
-    });
+    },[]);
     useEffect(() => {
         if (localStorage.getItem("Story Images") != null) {
             let myArrayString = localStorage.getItem('Story Images');
@@ -44,7 +45,7 @@ export default function Storyboard() {
     const increment = () => {
         setIndex(index => {
             let array = JSON.parse(localStorage.getItem('Current Story'));
-            if (index < array.length - 1) {
+            if (array && index < array.length - 1) {
                 return index + 1;
             }
             return index;

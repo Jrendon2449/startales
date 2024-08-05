@@ -88,7 +88,7 @@ export default function Found() {
             </div>
           )}
         </Popup>
-        <Button onClick={generateStory} name="Genrate Photo (AI)" />
+        <Button onClick={generateStory} name="Generate Photo (AI)" />
       </div>
 
       <img className="picture" id="picture"></img>

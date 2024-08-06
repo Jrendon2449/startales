@@ -17,8 +17,8 @@
 }
 
 .home--title {
-  color: #FFF;
-  font-feature-settings: 'cv06' on;
+  color: #fff;
+  font-feature-settings: "cv06" on;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 60px;
   font-style: normal;
@@ -44,9 +44,9 @@
   height: 64px;
   flex-shrink: 0;
   border-radius: 10px;
-  background: #0A0909;
+  background: #0a0909;
   border: none;
-  color: #FFF;
+  color: #fff;
   -webkit-text-stroke-width: 1;
   -webkit-text-stroke-color: #000;
   font-size: 25px;
@@ -59,9 +59,9 @@
   height: 64px;
   flex-shrink: 0;
   border-radius: 10px;
-  background: #0A0909;
+  background: #0a0909;
   border: none;
-  color: #FFF;
+  color: #fff;
   -webkit-text-stroke-width: 1;
   -webkit-text-stroke-color: #000;
   font-size: 25px;
@@ -82,4 +82,10 @@
   position: fixed;
   bottom: -1vh;
   z-index: -1;
+}
+
+.informationIcon {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
 }

@@ -88,6 +88,9 @@ const GenerateStoryButton = (props) => {
       setImage(props.img);
       addToStoryImages(props.img);
     }
+    else {
+      addToStoryImages("");
+    }
     navigate("/story");
   };
 

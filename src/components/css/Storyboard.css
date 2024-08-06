@@ -61,9 +61,12 @@ span {
   margin-bottom: 5%;
 }
 
+
 .starTitle {
   margin-top: 5%;
   margin-bottom: 5%;
+  margin-right: auto;
+  margin-left: auto;
   font-size: 2rem;
 }
 

@@ -131,7 +131,7 @@ export default function Storyboard() {
         <>
             <div className="storyboard">
                 <h1>{chapterText}</h1>
-                {imageLoaded ? (
+                {storyImage ? (
                     <img src={storyImage} alt="Story Image" id="story--image"/>
                 ) : (
                     <p></p>

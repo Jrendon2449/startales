@@ -27,7 +27,7 @@ export default function Home(props) {
           <Button name="Archive" onClick={props.fullscreen} />
         </Link>
         <IoMdInformationCircleOutline
-          size="50px"
+          size="35px"
           onClick={handleIconClick}
           className="informationIcon"
         />

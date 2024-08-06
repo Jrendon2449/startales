@@ -7,6 +7,7 @@ const GenerateStoryButton = (props) => {
   const [story, setStory] = useState([]);
   const [buttonState, setButtonState] = useState("Generate Story");
   const [image, setImage] = React.useState(null);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   let loading = false;
   const addToStoryImages = (image) => {
@@ -17,7 +18,7 @@ const GenerateStoryButton = (props) => {
       storyImages.push(image);
     }
     let myStrImages = JSON.stringify(storyImages);
-    
+
     localStorage.setItem("Story Images", myStrImages);
   };
 
@@ -29,17 +30,18 @@ const GenerateStoryButton = (props) => {
     if (!metaData.includes(props.star)) {
       metaData.push(props.star);
     }
-    
 
     let myStrMetaData = JSON.stringify(metaData);
     localStorage.setItem("Current Metadata", myStrMetaData);
   };
 
   const dummyClick = () => {
-    
     navigate("/story");
   };
+
   const handleClick = async () => {
+    setIsButtonDisabled(true);
+    console.log("test");
     let storedStory = localStorage.getItem("Current Story");
     if (storedStory) {
       storedStory = JSON.stringify(JSON.parse(storedStory));
@@ -81,7 +83,6 @@ const GenerateStoryButton = (props) => {
 
     addToMetaData();
 
-
     if (props.img) {
       console.log(props.img);
       setImage(props.img);
@@ -92,7 +93,16 @@ const GenerateStoryButton = (props) => {
 
   return (
     <div>
-      <Button id="story--button" onClick={handleClick} name={buttonState} />
+      <Button
+        id="story--button"
+        onClick={handleClick}
+        name={buttonState}
+        disabled={isButtonDisabled}
+        style={{
+          backgroundColor: isButtonDisabled ? "#ccc" : "#0a0909",
+          cursor: isButtonDisabled ? "not-allowed" : "",
+        }}
+      />
     </div>
   );
 };

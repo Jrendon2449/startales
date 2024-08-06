@@ -50,7 +50,7 @@ export default function ArchiveBoard(props) {
     return (
         <>
             <div className="searchboard">
-            {archiveMetaData.length > 0 ? archiveListElements : <h1>Click Button Below to learn more!</h1>}
+            {archiveMetaData.length > 0 ? archiveListElements : <h1>No past stories available</h1>}
             </div>
         </>
     )

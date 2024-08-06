@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
 import Button from '../Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const GenerateScienceButton = (props) => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [buttonState, setButtonState] = useState("Generate Science");
+    const [image, setImage] = React.useState(null);
 
     const dummyClick = () => {
         
         navigate('/science');
     }
+    const addToScienceImages = (image) => {
+        let scienceImages = JSON.parse(localStorage.getItem("Science Images"));
+        if (scienceImages == null) {
+          scienceImages = [image];
+        } else {
+          scienceImages.push(image);
+        }
+        let myStrImages = JSON.stringify(scienceImages);
+        console.log("science images", myStrImages);
+        localStorage.setItem("Science Images", myStrImages);
+    };
     const handleClick = async () => {
         setButtonState("Generating Science...");
         const response = await fetch(
@@ -38,7 +51,12 @@ const GenerateScienceButton = (props) => {
 
         let myStrScience = JSON.stringify(science);
         localStorage.setItem("Science List", myStrScience);
-
+        if (props.img) {
+            console.log(props.img);
+            setImage(props.img);
+            addToScienceImages(props.img);
+            localStorage.setItem("Current Science Image", props.img);
+        }
         navigate('/science');
     };
 

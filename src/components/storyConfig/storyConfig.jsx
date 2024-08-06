@@ -11,11 +11,9 @@ function StoryConfig() {
   const navigate = useNavigate();
   const location = useLocation();
   const celestialBody = location.state.celestialBody;
-  const croppedFile = location.state.croppedFile;
-  
-  
-
+  const file = location.state.file;
   const [listLength, setListLength] = React.useState(0);
+
   React.useEffect(() => {
     const currentStory = JSON.parse(localStorage.getItem("Current Story"));
     setListLength(currentStory ? currentStory.length : 0);
@@ -69,15 +67,6 @@ function StoryConfig() {
       <Nav title="Story Configuration" navigate={handleReturn} return_path={"/found"} />
       <span>Generating Chapter for:</span>
       <div className="storyConfigboard">
-        {/** 
-        <input
-          type="text"
-          placeholder="star_name"
-          value={formData.star_name}
-          onChange={handleChange}
-        />
-        */}
-
         <p className="starTitle">{celestialBody.name}</p>
         <span>Configure Story</span>
         <div className="slider-container">
@@ -161,7 +150,7 @@ function StoryConfig() {
         lan= {formData.language}
         con= "" 
         flag= "CONTINUING"
-        img= {croppedFile}
+        img= {file}
       />
     </div>
   );

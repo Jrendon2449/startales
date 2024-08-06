@@ -14,6 +14,7 @@ import Found from "./components/search/Found";
 import StoryConfig from "./components/storyConfig/storyConfig";
 import ScienceOverview from "./components/science/ScienceOverview";
 import ArchiveStoryView from "./components/archive/ArchiveStoryView";
+import Information from "./components/information/information.jsx"
 // assets
 import Background from "./assets/background.svg";
 import "./App.css";
@@ -44,6 +45,7 @@ function App() {
             <Route path="/found" element={<Found />} />
             <Route path="/archive" element={<Archive />} />
             <Route path="/archive_story" element={<ArchiveStoryView />} />
+            <Route path="/information" element = {<Information/>} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
           <img src={Background} className="background" alt="Background" />

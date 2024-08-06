@@ -17,16 +17,18 @@ export default function ScienceOverviewBoard(props) {
         navigate('/search');
     };
     const scienceList = localStorage.getItem("Science List") ? JSON.parse(localStorage.getItem("Science List")) : [];
-    
-    const createScienceList = (celestialBodyString) => {
+    const createScienceList = (celestialBodyString, index) => {        
         const celestialBody = JSON.parse(celestialBodyString);
         if (!localStorage.getItem(celestialBody.name)) {
             localStorage.setItem(celestialBody.name, celestialBody.article);
         }
-        const handleSearchClick = () => {
+        const handleSearchClick = (imageIndex) => {
             localStorage.setItem("Current Science", localStorage.getItem(celestialBody.name));
+            localStorage.setItem("Current Science Image", JSON.parse(localStorage.getItem("Science Images"))[imageIndex]);
+            console.log(localStorage.getItem("Current Science Image"));
             navigate('/science');
         };
+        console.log(celestialBody.name)
         return (
             <div className="search-celestial-body">
                 <div className="search-celestial-body-text">
@@ -37,14 +39,18 @@ export default function ScienceOverviewBoard(props) {
                 </div>
                 <button 
                     className="search-celestial-body--button" 
-                    onClick={handleSearchClick}
+                    onClick={() => (handleSearchClick(index))}
                 >
                     <img src={rightArrow} alt="next" className="nav--icon"/>
                 </button>
             </div>)
     }
 
-    const scienceListElements = scienceList.map(createScienceList);
+    let scienceListElements = [];
+    for (let i = 0; i < scienceList.length; i++) {
+        scienceListElements.push(createScienceList(scienceList[i], i));
+    }
+
     
     return (
         <>

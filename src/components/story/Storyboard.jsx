@@ -114,7 +114,19 @@ export default function Storyboard() {
         localStorage.removeItem("Story Images");
         navigate('/archive');
     }
-
+    const shareClick = () => {
+    if (navigator.share) {
+        let story = storyText.map((paragraph) => paragraph.props.children).join('\n');
+        navigator.share({
+        title: 'My Awesome App',
+        text: story,
+        })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    } else {
+        console.log('Share not supported on this browser, do it the old way.');
+    }
+    };
     return (
         <>
             <div className="storyboard">
@@ -128,9 +140,10 @@ export default function Storyboard() {
                 <p>{storyText}</p>
             </div>
             <div className="storyboard--nav">
+                <button className="button2" onClick={shareClick} >Share</button>
                 <img src={back_button} alt="Back" onClick={decrement} className="nav--icon"/>
                 <img src={rightArrow} alt="Next" onClick={increment} className="nav--icon"/>
-                <Button onClick={finishClick} name="Finish"/>
+                <button className="button2" onClick={finishClick}>Finish</button>
             </div>
         </>
     )

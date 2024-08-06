@@ -54,6 +54,21 @@
   font-weight: 500;
   line-height: normal;
 }
+.button2 {
+  width: 100px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #0A0909;
+  border: none;
+  color: #FFF;
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #000;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 
 .page {
   width: 100%;

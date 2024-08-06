@@ -41,8 +41,8 @@ export default function Scienceboard() {
     return (
         <div className="scienceboard">
             <h1>{starText}</h1>
-            {imageLoaded ? (
-                <img src={scienceImage} style= {{ "margin-bottom": "20px" }} alt="Science Image" id="story--image"/>
+            {scienceImage ? (
+                <img src={scienceImage} style= {{ "marginBottom": "20px" }} alt="Science Image" id="story--image"/>
             ) : (
                 <p></p>
             )}

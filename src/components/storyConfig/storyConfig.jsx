@@ -73,7 +73,7 @@ function StoryConfig() {
       />
       <span>Generating Chapter for:</span>
       <div className="storyConfigboard">
-        <p className="starTitle">{celestialBody.name}</p>
+        <h1 className="starTitle">{celestialBody.name}</h1>
         <span>Configure Story</span>
         <div className="slider-container">
           <p className="sliderTitle">

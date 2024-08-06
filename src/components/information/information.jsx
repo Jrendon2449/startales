@@ -12,31 +12,35 @@ const Information = () => {
       <div className="information-container">
         <div className="information-wrapper">
           <b>Introduction to the app: </b> <br />
+          <br></br>
           <p className="appIntroduction">
-            This app is designed for begineer who wants to have more interactive
-            experience when learning more about the stars in the sky while
-            stargazing , and also for intermidiate stargazers who want to learn
-            more about the scientific facts of the stars.
+            We designed this app for stargazers to learn more about the scientific
+            facts of the stars and for them to have more interactive, engaging
+            experiences when stargazing.
           </p>
           <br />
-          <b>Introduction to Story Pages: </b> <br />
+          <b>Introduction to Story Page: </b> <br />
+          <br></br>
           <p className="storyIntroduction">
-            The sotry pages allow you to create your own story of a star based
-            on your personal preference includes genre, mood, and language. We
-            also provide different length and reading level for different users
-            based on their age. We believe that the process of creating the
-            story can give the users a better learning experience and motivation
-            while playing with the configuration of the story
+            The story page allows users to create their own story of a star based
+            on their personal preference for genre, mood, and language. We also 
+            provide different length and reading levels for users across various 
+            age range. We believe that the process of creating the story can give 
+            the users a better learning experience and motivation for stargazing
           </p>
           <br />
-          <b>Introduction to Science Pages: </b> <br />
+          <b>Introduction to Science Page: </b> <br />
+          <br></br>
           <p className="scienceIntroduction">
-            The science pages are designed for users that are more experienced
-            with stargazing those want to learn more about the scientific facts
-            about the stars. This app will give users access to the information
-            right away with a few clicks, save the users' time to go through the
-            wikipedia and some other websites for extra scitific information.
+            The science page allows users to learn interesting, unique facts
+            about the stars with a click of a button! This app will give users 
+            access to the information immediately, instead of having to search
+            through online websites for extra scientific information.
           </p>
+          <br />
+          <b>We hope you enjoy our app!</b> <br />
+          <br></br>
+          <br></br>
         </div>
       </div>
     </>

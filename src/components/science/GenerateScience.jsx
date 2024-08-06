@@ -54,6 +54,10 @@ const GenerateScienceButton = (props) => {
       addToScienceImages(props.img);
       localStorage.setItem("Current Science Image", props.img);
     }
+    else {
+        addToScienceImages("");
+        localStorage.setItem("Current Science Image", "");
+    }
     navigate("/science");
   };
 

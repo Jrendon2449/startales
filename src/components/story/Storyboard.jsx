@@ -118,7 +118,7 @@ export default function Storyboard() {
     if (navigator.share) {
         let story = storyText.map((paragraph) => paragraph.props.children).join('\n');
         navigator.share({
-        title: 'My Awesome App',
+        title: 'Check out this cool story I made with Star Tales!',
         text: story,
         })
         .then(() => console.log('Successful share'))

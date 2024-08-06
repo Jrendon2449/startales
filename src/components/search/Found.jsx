@@ -52,13 +52,15 @@ export default function Found() {
   };
 
   const ImageUpload = (event) => {
-    const fileUrl = URL.createObjectURL(event.target.files[0]);
-    console.log("upload", fileUrl);
-    setFile(fileUrl);
-    setHasImage(true);
+    const reader = new FileReader();
+    reader.onloadend = function() {
+      console.log("upload", reader.result);
+      setFile(reader.result);
+      setHasImage(true);
+    }
+    reader.readAsDataURL(event.target.files[0]);
     event.target.value = null;
   };
-
   return (
     <div className="find page">
       <Nav title="You found:" navigate={handleReturn} return_path={"/find"} />

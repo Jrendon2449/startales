@@ -2,13 +2,16 @@
   border-radius: 20px;
   background: rgba(218, 199, 242, 0.25);
   width: 80%;
-  height: auto;
+  height: 65%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
   color: white;
   overflow: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
 
 p {
   text-align: left;
@@ -17,4 +20,6 @@ p {
 .information-wrapper {
   margin-left: 5%;
   margin-right: 5%;
+  height: 65vh;
+  margin-bottom: 20px;
 }

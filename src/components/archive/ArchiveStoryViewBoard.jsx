@@ -62,7 +62,7 @@ export default function ArchiveStoryViewBoard() {
         <>
             <div className="storyboard">
                 <h1>{chapterText}</h1>
-                <img src={storyImage} alt="Story Image" id="story--image"/>
+                {storyImage ? <img src={storyImage} alt="Story Image" id="story--image"/> : <p></p>}
                 <p>{storyText}</p>
             </div>
             <div className="archiveboard--nav">

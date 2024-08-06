@@ -100,7 +100,7 @@ const GenerateStoryButton = (props) => {
         disabled={isButtonDisabled}
         style={{
           backgroundColor: isButtonDisabled ? "#ccc" : "#0a0909",
-          cursor: isButtonDisabled ? "not-allowed" : "",
+          cursor: isButtonDisabled ? "not-allowed" : "pointer",
         }}
       />
     </div>

@@ -1,33 +1,42 @@
 .search--button {
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    margin: 0;
-    margin-top: auto;
-    margin-bottom: 2vh;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: 2vh;
 }
 
 .search--icon {
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    transition: transform 0.1s, box-shadow 0.1s;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.1s, box-shadow 0.1s;
 }
 
 @media (min-width: 768px) {
-    .search--icon {
-        width: 100px;
-        height: 100px;
-    }
+  .search--icon {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 @media (max-width: 767px) {
-    .search--icon {
-        width: 100px;
-        height: 100px;
-    }
+  .search--icon {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .search--icon:active {
-    transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+.search--button h3 {
+  color: white;
+  font-size: 1.2rem;
 }

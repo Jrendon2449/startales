@@ -40,3 +40,8 @@ Start the server
   npm start
 ```
 
+To run on phone, please go to https://{LOCAL_IP_ADDRESS}:8000
+
+To use progressive web app features on iPhone, please use Safari -> Share -> Add to Home Screen
+Features such as the navigation compass and angle will only work on mobile devices, as well as the functionality for taking pictures.
+
